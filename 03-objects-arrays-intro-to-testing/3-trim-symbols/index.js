@@ -6,4 +6,24 @@
  */
 export function trimSymbols(string, size) {
 
-}
+    if (size === 0) return '';
+    if (size === undefined) return string;
+
+    let count = 0;
+    const result = [];
+
+    for (const letter of string) {
+        if (result[result.length - 1] === letter) {
+            if (count < size) {
+                result.push(letter);
+                count += 1;
+            }
+        } else {
+            count = 1;
+            result.push(letter);
+        }
+    }
+
+    return result.join('');
+
+};
