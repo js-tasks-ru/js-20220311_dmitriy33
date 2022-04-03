@@ -59,15 +59,17 @@ export default class ColumnChart {
         element.classList.remove('column-chart_loading');
       }
 
+      this.subElements = this.getSubElements();
+
       return element;
     }
 
     getSubElements() {
       const result = {};
-      const elements = querySelectorAll('[data-element]');
+      const elements = document.querySelectorAll('[data-element]');
 
       for (const subElement of elements) {
-        const name = subElements.dataset.element;
+        const name = subElement.dataset.element;
 
         result[name] = subElement;
       }
