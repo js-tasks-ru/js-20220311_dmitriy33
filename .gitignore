@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/intellij+all,visualstudiocode
 
 ### Intellij+all ###
@@ -10,6 +11,8 @@
 .idea/dictionaries
 .idea
 =======
+=======
+>>>>>>> 3bbb75f (asdasd)
 
 # Created by https://www.gitignore.io/api/intellij+all,visualstudiocode
 
@@ -154,4 +157,8 @@ teacher.karma.conf.js
 .vscode
 
 teacher*
+<<<<<<< HEAD
 TODO.md
+=======
+TODO.md
+>>>>>>> 3bbb75f (asdasd)
