@@ -10,7 +10,7 @@ export default class SortableTable {
 
   getRowsHeader() {
     return this.headerConfig.map(item => {
-      return `<div class="sortable-table__cell" data-id="${item.id}" data-sortable="${item.sortable}" data-order="asc">
+      return `<div class="sortable-table__cell" data-id="${item.id}" data-sortable="${item.sortable}">
         <span>${item.title}</span>
       </div>`;
     }).join('');
@@ -22,16 +22,25 @@ export default class SortableTable {
             </div>`;
   }
 
+  getRowBody(item) {
+    const cells = this.headerConfig.map(({id, template}) => {
+      return {
+        id,
+        template
+      };
+    });
+
+    return cells.map(({id, template}) => {
+      return template
+        ? template(item[id])
+        : `<div class="sortable-table__cell">${item[id]}</div>`;
+    }).join('');
+  }
+
   getRowsBody(data = this.data) {
     return data.map(item => {
       return `<a href="/products/${item.id}" class="sortable-table__row">
-                <div class="sortable-table__cell">
-                  <img class="sortable-table-image" alt="${item.title}" src="${item.images[0].url}">
-                </div>
-                <div class="sortable-table__cell">${item.title}</div>
-                <div class="sortable-table__cell">${item.quantity}</div>
-                <div class="sortable-table__cell">${item.price}</div>
-                <div class="sortable-table__cell">${item.sales}</div>
+                ${this.getRowBody(item)}
               </a>`;
     }).join('');
   }
